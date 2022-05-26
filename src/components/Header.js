@@ -5,7 +5,7 @@ import { SearchIcon, HomeIcon, FlagIcon, PlayIcon, ShoppingCartIcon, UserGroupIc
 import { useSession, signOut } from 'next-auth/react'
 
 function Header () {
-  const {session} = useSession()
+  const { data: session } = useSession()
 
   return (
     <div className='flex items-center justify-between p-3 shadow-md'>
@@ -13,7 +13,8 @@ function Header () {
       {/* Left section */}
       <div className='flex items-center'>
         <Image
-          src="https://picsum.photos/200"
+          className='rounded-full'
+          src="https://cdn.pixabay.com/photo/2017/03/24/07/28/facebook-2170419_960_720.png"
           alt="logo"
           width={40}
           height={40}
@@ -42,7 +43,15 @@ function Header () {
 
       {/* Right section */}
       <div className='flex items-center space-x-2'>
-        <p onClick={ signOut } className='whitespace-nowrap pr-3 font-semibold'>Mario Vinillo</p>
+        <Image
+          className='rounded-full'
+          width={30}
+          height={30}
+          layout="fixed"
+          priority="false"
+          src={ session.user.image }
+        />
+        <p onClick={ signOut } className='whitespace-nowrap pr-3 font-semibold'>{ session.user.name }</p>
         <ViewGridIcon className='icon' />
         <ChatIcon className='icon' />
         <BellIcon className='icon' />

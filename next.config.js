@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      'picsum.photos'
+      'platform-lookaside.fbsbx.com',
+      'cdn.pixabay.com'
     ]
   }
 }
