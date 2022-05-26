@@ -2,8 +2,11 @@
 import Image from 'next/image'
 import IconHeader from './IconHeader'
 import { SearchIcon, HomeIcon, FlagIcon, PlayIcon, ShoppingCartIcon, UserGroupIcon, ViewGridIcon, BellIcon, ChatIcon, ChevronDownIcon } from '@heroicons/react/solid'
+import { useSession, signOut } from 'next-auth/react'
 
 function Header () {
+  const {session} = useSession()
+
   return (
     <div className='flex items-center justify-between p-3 shadow-md'>
 
@@ -39,7 +42,7 @@ function Header () {
 
       {/* Right section */}
       <div className='flex items-center space-x-2'>
-        <p className='whitespace-nowrap pr-3 font-semibold'>Mario Vinillo</p>
+        <p onClick={ signOut } className='whitespace-nowrap pr-3 font-semibold'>Mario Vinillo</p>
         <ViewGridIcon className='icon' />
         <ChatIcon className='icon' />
         <BellIcon className='icon' />
